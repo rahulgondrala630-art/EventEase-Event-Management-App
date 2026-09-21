@@ -1,0 +1,14 @@
+services:
+  mysql:
+    image: mysql:8.4
+    environment:
+      MYSQL_DATABASE: eventease
+      MYSQL_USER: eventease
+      MYSQL_PASSWORD: eventease
+      MYSQL_ROOT_PASSWORD: local-root-only
+    ports:
+      - "3307:3306"
+    volumes:
+      - eventease_mysql:/var/lib/mysql
+volumes:
+  eventease_mysql:
