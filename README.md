@@ -1,27 +1,41 @@
-# EventEase — Event Management Application
+# EventEase
 
-EventEase is a Java and Spring Boot event-management application focused on turning event creation and participation into a clear, approachable workflow.
+EventEase is a focused event lifecycle service for creating, discovering, and joining events without turning the product into a generic operations dashboard.
 
-## Highlights
+## Product shape
 
-- User authentication and protected event workflows
-- Event creation, discovery, and management flows
-- REST API foundations with a MySQL-backed application model
-- Responsive HTML/CSS interface
+Event organizers publish events with clear capacity and schedule information. Attendees discover relevant events, inspect details, and join with predictable validation around capacity and timing.
+
+## Starter architecture
+
+- **Domain:** event identity, schedule, venue, capacity, and participation rules
+- **Application:** use cases for publishing, discovery, registration, and cancellation
+- **Adapters:** REST controllers and MySQL persistence
+- **Quality:** validation, service tests, integration tests, and repeatable local setup
 
 ## Technology
 
-Java · Spring Boot · MySQL · HTML · CSS · REST APIs
+Java 17 · Spring Boot · Spring Web · Spring Data JPA · MySQL · Bean Validation · Maven · Docker
 
-## Engineering focus
+## Repository map
 
-This project demonstrates practical full-stack fundamentals: separating web concerns from domain behavior, modeling event workflows, validating user input, and designing an interface around the actions a user needs to complete.
+`src/main/java/com/eventease` contains the application, domain, application, and adapter layers. Database migrations live in `src/main/resources/db/migration`; architecture notes live in `docs/`.
+
+## Run locally
+
+```bash
+./mvnw spring-boot:run
+```
+
+Use `docker compose up -d mysql` for the local database. The service is intentionally seeded with non-sensitive example events only.
 
 ## Roadmap
 
-- Add automated controller and service tests
-- Introduce Docker Compose for repeatable local setup
-- Add a React/TypeScript client as a progressive modernization step
-- Add API documentation and CI checks
+- Add organizer and attendee authentication
+- Add event search and category filters
+- Add registration confirmation and cancellation policies
+- Publish an OpenAPI contract and browser demo
 
-This is a portfolio learning project. Demo data should remain non-sensitive.
+## Portfolio note
+
+This project emphasizes humane event flows, clear validation, and domain modeling rather than visual similarity to the Nexora operations workspace.
